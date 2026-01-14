@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Full screen clock by vikesh</title>
 </head>
 <style>
     *{
@@ -103,11 +103,11 @@
     let white =false;
     btn.innerText = white ? 'black' : 'white';
     btn.addEventListener('click',()=>{
+        white=!white;
         btn.innerText = white ? 'black' : 'white';
         box.style.color=  white ? 'black' : 'white';
         box.style.backgroundColor=  white ? 'white' : 'black';
         white ? alert('Only "GAY" use light mode🌈🌈🏳️‍🌈🏳️‍🌈') : '';
-        white=!white;
     });
 </script>
 </html>
