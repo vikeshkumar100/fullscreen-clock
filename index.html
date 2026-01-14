@@ -85,7 +85,7 @@
         hspan.innerText=time.getHours().toString().padStart(2,'0');
         mspan.innerText=time.getMinutes().toString().padStart(2,'0');
         sspan.innerText=time.getSeconds().toString().padStart(2,'0');
-        date.innerText=`${time.getDate()}-${time.getMonth()}-${time.getFullYear()}`;
+        date.innerText=`${time.getDate()}-${time.getMonth()+1}-${time.getFullYear()}`;
         
         
         if(blink){
