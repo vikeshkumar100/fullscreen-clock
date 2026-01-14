@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .outer-box{
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        gap: 20px;
+    }
+    .time-box{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: monospace;
+        font-size:20vw;
+    }
+    .date-box{
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: monospace;
+        font-size:4vw;
+
+    }
+    .inner-box span {
+    transition: opacity 1s linear;
+    }
+
+    #btn{
+        padding: 6px;
+        border-radius: 5px;
+        font-size: large;
+    }
+    #btn:hover{
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <div class="outer-box">
+        <div class="time-box">
+        </div>
+        <div class="date-box"></div>
+        <div>
+            <button id="btn"></button>
+        </div>
+    </div>
+</body>
+<script>
+    
+    let clock=document.getElementsByClassName('time-box')[0];
+    let date=document.getElementsByClassName('date-box')[0];
+    let hspan=document.createElement('span');
+    let mspan=document.createElement('span');
+    let sspan=document.createElement('span');
+    
+    let hcolspan=document.createElement('span');
+    hcolspan.innerText=" : ";
+    
+    let mcolspan=document.createElement('span');
+    mcolspan.innerText=" : ";
+    
+    let blink=true;
+    clock.append(hspan,hcolspan,mspan,mcolspan,sspan);
+    
+    setInterval(()=>{
+        let time=new Date();
+        
+        hspan.innerText=time.getHours().toString().padStart(2,'0');
+        mspan.innerText=time.getMinutes().toString().padStart(2,'0');
+        sspan.innerText=time.getSeconds().toString().padStart(2,'0');
+        date.innerText=`${time.getDate()}-${time.getMonth()}-${time.getFullYear()}`;
+        
+        
+        if(blink){
+            hcolspan.style.opacity = '0';
+            mcolspan.style.opacity = '0';
+        }else{
+            hcolspan.style.opacity = '1';
+            mcolspan.style.opacity = '1';
+        }
+        blink=!blink;
+    },500);
+
+    let btn=document.getElementById('btn');
+    let box=document.getElementsByClassName('outer-box')[0];
+    let white =false;
+    btn.innerText = white ? 'black' : 'white';
+    btn.addEventListener('click',()=>{
+        btn.innerText = white ? 'black' : 'white';
+        box.style.color=  white ? 'black' : 'white';
+        box.style.backgroundColor=  white ? 'white' : 'black';
+        white ? alert('Only "GAY" use light mode🌈🌈🏳️‍🌈🏳️‍🌈') : '';
+        white=!white;
+    });
+</script>
+</html>
